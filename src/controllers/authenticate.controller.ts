@@ -3,6 +3,7 @@ import { PrismaService } from '@/prisma';
 import {
   Body,
   Controller,
+  HttpCode,
   Post,
   UnauthorizedException,
   UsePipes,
@@ -26,6 +27,7 @@ export class AuthenticateController {
   ) {}
 
   @Post()
+  @HttpCode(200)
   @UsePipes(new ZodValidationPipe(authenticateBodySchema))
   async handle(@Body() body: AuthenticateSchema) {
     const { email, password } = body;
