@@ -10,20 +10,20 @@ import {
 import { hash } from 'bcrypt';
 import { z } from 'zod';
 
-const CreateAccountSchema = z.object({
+const createAccountSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   password: z.string(),
 });
 
-type CreateAccountInput = z.infer<typeof CreateAccountSchema>;
+type CreateAccountInput = z.infer<typeof createAccountSchema>;
 
 @Controller('/accounts')
 export class CreateAccountController {
   constructor(private readonly prisma: PrismaService) {}
 
   @Post()
-  @UsePipes(new ZodValidationPipe(CreateAccountSchema))
+  @UsePipes(new ZodValidationPipe(createAccountSchema))
   async handle(@Body() body: CreateAccountInput) {
     const { name, email, password } = body;
 
