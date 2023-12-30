@@ -1,4 +1,4 @@
-import { PrismaService } from '@/infra/prisma';
+import { PrismaService } from '@/infra/database/prisma';
 import {
   Body,
   ConflictException,

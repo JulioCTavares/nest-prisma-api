@@ -5,15 +5,15 @@ import {
   CreateQuestionController,
   GetRecentQuestionsController,
 } from './controllers';
-import { PrismaService } from '../prisma';
+import { DatabaseModule } from '../database';
 
 @Module({
+  imports: [DatabaseModule],
   controllers: [
     CreateAccountController,
     AuthenticateController,
     CreateQuestionController,
     GetRecentQuestionsController,
   ],
-  providers: [PrismaService],
 })
 export class HttpModule { }

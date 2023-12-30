@@ -1,5 +1,5 @@
 import { CurrentUser, JwtAuthGuard, UserPayload } from '@/infra/auth';
-import { PrismaService } from '@/infra/prisma';
+import { PrismaService } from '@/infra/database/prisma';
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { z } from 'zod';
 import { ZodValidationPipe } from '../pipes';
