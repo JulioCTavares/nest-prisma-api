@@ -1,5 +1,4 @@
-import { ZodValidationPipe } from '@/pipes';
-import { PrismaService } from '@/prisma';
+import { PrismaService } from '@/infra/prisma';
 import {
   Body,
   Controller,
@@ -11,6 +10,7 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { compare } from 'bcrypt';
 import { z } from 'zod';
+import { ZodValidationPipe } from '../pipes';
 
 const authenticateBodySchema = z.object({
   email: z.string().email(),
@@ -24,7 +24,7 @@ export class AuthenticateController {
   constructor(
     private readonly jwt: JwtService,
     private readonly prisma: PrismaService,
-  ) {}
+  ) { }
 
   @Post()
   @HttpCode(200)
